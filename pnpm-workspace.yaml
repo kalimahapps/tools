@@ -1,5 +1,0 @@
-onlyBuiltDependencies:
-  - '@morev/vue-transitions'
-  - '@parcel/watcher'
-  - esbuild
-  - vue-demi
