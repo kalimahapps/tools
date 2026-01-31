@@ -1,6 +1,6 @@
 import jameelTheme from '../jameel-color-theme.json';
-import { createHighlighterCore } from 'shiki/core';
-import getWasm from 'shiki/wasm';
+import { createHighlighter } from 'shiki';
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
 
 /**
  * Highlight the output code
@@ -9,10 +9,10 @@ import getWasm from 'shiki/wasm';
  * @return {Promise<string>}      Highlighted code
  */
 const highlight = async function (code: string): Promise<string> {
-	const highlighter = await createHighlighterCore({
+	const highlighter = await createHighlighter({
 		themes: [jameelTheme],
-		langs: [import('shiki/langs/vue.mjs')],
-		loadWasm: getWasm,
+		langs: ['vue'],
+		engine: createOnigurumaEngine(import('shiki/wasm')),
 	});
 
 	return highlighter.codeToHtml(code, {

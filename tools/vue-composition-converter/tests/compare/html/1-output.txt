@@ -1,5 +1,5 @@
 <pre class="shiki Jameel" style="background-color:#1e2429;color:#bbbbbb" tabindex="0"><code><span class="line"><span style="color:#4885D5">&#x3C;template></span></span>
-<span class="line"><span style="color:#4885D5">  &#x3C;p></span><span style="color:#BBBBBB">{{ </span><span style="color:#FACC15">greeting</span><span style="color:#BBBBBB"> }} World!</span><span style="color:#4885D5">&#x3C;/p></span></span>
+<span class="line"><span style="color:#4885D5">  &#x3C;p></span><span style="color:#BBBBBB">{{ greeting }} World!</span><span style="color:#4885D5">&#x3C;/p></span></span>
 <span class="line"><span style="color:#4885D5">&#x3C;/template></span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#4885D5">&#x3C;script</span><span style="color:#88EADF"> setup</span><span style="color:#4885D5">></span></span>

@@ -21,6 +21,7 @@ for (const inputFileName of compareFiles) {
 
 	test(`should match ${inputFileName}`, async () => {
 		const result = await highlightCode(fileContent);
+		console.log(result);
 		assert.equal(result, output);
 	});
 }
