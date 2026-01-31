@@ -5,15 +5,15 @@ import { parse } from '@vue/compiler-dom';
  * Generates a string of attributes from an ElementNode.
  */
 const getAttributesString = (node: ElementNode | undefined) => {
-	return node?.props?.map((prop) => {
-	  return `${prop.name}${prop.value ? `="${prop.value.content}"` : ''}`;
+	return node?.props?.map((property) => {
+		return `${property.name}${property.value ? `="${property.value.content}"` : ''}`;
 	}).join(' ') || '';
 };
 
 /**
  * Parse SFC user input to extract template, script and style
  */
-const parseSfc = (sfcContent:string) => {
+const parseSfc = (sfcContent: string) => {
 	const parsedUserInput = parse(sfcContent, {
 		parseMode: 'sfc',
 	});
@@ -36,7 +36,7 @@ const parseSfc = (sfcContent:string) => {
 		templateContent: template?.innerLoc.source,
 		scriptContent: script?.innerLoc.source,
 		styleContent: style?.innerLoc.source,
-		styleAttributes: styleAttributes || 'scoped'
+		styleAttributes: styleAttributes || 'scoped',
 	};
 };
 
@@ -46,10 +46,10 @@ const parseSfc = (sfcContent:string) => {
  * @param scriptContent The updated script content
  */
 const composeSfc = (
-	scriptContent:string,
-	templateContent:string,
-	styleContent:string,
-	styleAttributes:string
+	scriptContent: string,
+	templateContent: string,
+	styleContent: string,
+	styleAttributes: string
 ) => {
 	const templateSfc = `<template>${templateContent}</template>`;
 	let scriptSfc = `&lt;script setup&gt;\n${scriptContent}\n&lt;/script&gt;`;

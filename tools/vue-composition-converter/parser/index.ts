@@ -5,7 +5,7 @@ import PropertiesParser from './props';
 import Lifecycle from './lifecycle';
 
 type CallbacksMap = {
-	[key: string]: string,
+	[key: string]: string;
 };
 
 type lifecycleType = 'created' | 'mounted' | 'beforeMount' | 'beforeUpdate' | 'updated' | 'beforeDestroy' | 'destroyed';
@@ -42,32 +42,32 @@ class Parser {
 	/**
 	 * List of output lines
 	 */
-	output : string[] = [];
+	output: string[] = [];
 
 	/**
 	 * List of imports (eg: ref, computed, watch ...)
 	 */
-	imports : string[] = [];
+	imports: string[] = [];
 
 	/**
 	 * List of data identifiers (from data object)
 	 */
-	dataIdentifiers : any = {};
+	dataIdentifiers: any = {};
 
 	/**
 	 * List of method identifiers (from methods)
 	 */
-	methodIdentifiers : string[] = [];
+	methodIdentifiers: string[] = [];
 
 	/**
 	 * List of props identifiers (from props object)
 	 */
-	propsIdentifiers : string[] = [];
+	propsIdentifiers: string[] = [];
 
 	/**
 	 * List of computed identifiers (from computed methods)
 	 */
-	computedIdentifiers : string[] = [];
+	computedIdentifiers: string[] = [];
 
 	/**
 	 * Show heading comments for each section (eg: // Data, // Methods .. etc)
@@ -80,12 +80,12 @@ class Parser {
 	 * @param {string} input The input string
 	 * @param {object} props initial props
 	 */
-	constructor (input:string, constructorProperties: Partial<Parser> = {}) {
+	constructor(input: string, constructorProperties: Partial<Parser> = {}) {
 		this.input = input;
 		Object.assign(this, constructorProperties);
 	}
 
-	commentInlineSection (comment: string): string | undefined {
+	commentInlineSection(comment: string): string | undefined {
 		return this.showSectionComment ? `// ${comment}` : undefined;
 	}
 
@@ -100,12 +100,12 @@ class Parser {
 	 *
 	 * @return {string[]} List of import declarations
 	 */
-	getImportDeclaration () :string[] {
+	getImportDeclaration(): string[] {
 		const importDeclarations = this.ast.body.filter((node: any) => {
 			return node.type === 'ImportDeclaration';
 		});
 
-		const imports :string[] = [];
+		const imports: string[] = [];
 
 		for (const importDeclaration of importDeclarations) {
 			const { start, end } = importDeclaration;
@@ -122,7 +122,7 @@ class Parser {
 	 * @throws {Error} If no export declaration is found
 	 * @return {object} The properties
 	 */
-	getProperties () {
+	getProperties() {
 		const exportDeclaration = this.ast.body.find((node: any) => {
 			return node.type === 'ExportDefaultDeclaration';
 		});
@@ -131,11 +131,11 @@ class Parser {
 			throw new Error('No export declaration found');
 		}
 
-		const results : {[key: string] : any} = {};
+		const results: { [key: string]: any } = {};
 		const propertiesName = Object.keys(this.callbacksMap);
 
 		const { properties } = exportDeclaration.declaration;
-		for (const propertyName of propertiesName){
+		for (const propertyName of propertiesName) {
 			const property = properties.find((property: any) => {
 				const { name } = property.key;
 				return name === propertyName;
@@ -153,7 +153,7 @@ class Parser {
 	 * @param {any}           data The lifecycle object
 	 * @param {lifecycleType} key  The lifecycle type (created, mounted .. etc)
 	 */
-	lifecycleCallback (data: any, key: lifecycleType) {
+	lifecycleCallback(data: any, key: lifecycleType) {
 		const lifecycleParser = new Lifecycle(data);
 		const convertedData = lifecycleParser
 			.setfullInput(this.input)
@@ -178,7 +178,7 @@ class Parser {
 	 *
 	 * @param {any} data Ast related to data
 	 */
-	dataCallback (data:any) {
+	dataCallback(data: any) {
 		const dataParser = new DataParser(data);
 		const convertedData = dataParser.setfullInput(this.input).convert();
 		const dataImports = dataParser.getImports();
@@ -197,7 +197,7 @@ class Parser {
 	 *
 	 * @param {any} methods Ast related to methods
 	 */
-	methodsCallback (methods:any) {
+	methodsCallback(methods: any) {
 		const methodParser = new MethodParser(methods);
 		const convertedMethods = methodParser
 			.setfullInput(this.input)
@@ -214,16 +214,16 @@ class Parser {
 	 *
 	 * @param {any} computed Ast related to computed methods
 	 */
-	computedCallback (computed:any) {
+	computedCallback(computed: any) {
 		const methodParser = new MethodParser(computed);
-		const convertedMethods =
-		methodParser
-			.setfullInput(this.input)
-			.setMethodType('computed')
-			.setDataIdentifiers(this.dataIdentifiers)
-			.setMethodIdentifiers(this.methodIdentifiers)
-			.setPropsIdentifiers(this.propsIdentifiers)
-			.convert();
+		const convertedMethods
+			= methodParser
+				.setfullInput(this.input)
+				.setMethodType('computed')
+				.setDataIdentifiers(this.dataIdentifiers)
+				.setMethodIdentifiers(this.methodIdentifiers)
+				.setPropsIdentifiers(this.propsIdentifiers)
+				.convert();
 
 		this.computedIdentifiers = methodParser.getComputedIdentifiers();
 
@@ -236,17 +236,17 @@ class Parser {
 	 *
 	 * @param {any} watch Ast related to watch methods
 	 */
-	watchCallback (watch:any) {
+	watchCallback(watch: any) {
 		const methodParser = new MethodParser(watch);
-		const convertedMethods =
-		methodParser
-			.setfullInput(this.input)
-			.setMethodType('watch')
-			.setDataIdentifiers(this.dataIdentifiers)
-			.setMethodIdentifiers(this.methodIdentifiers)
-			.setPropsIdentifiers(this.propsIdentifiers)
-			.setComputedIdentifiers(this.computedIdentifiers)
-			.convert();
+		const convertedMethods
+			= methodParser
+				.setfullInput(this.input)
+				.setMethodType('watch')
+				.setDataIdentifiers(this.dataIdentifiers)
+				.setMethodIdentifiers(this.methodIdentifiers)
+				.setPropsIdentifiers(this.propsIdentifiers)
+				.setComputedIdentifiers(this.computedIdentifiers)
+				.convert();
 
 		this.outputAddLines('', this.commentInlineSection('Watch'), ...convertedMethods);
 		this.imports.push('watch');
@@ -257,7 +257,7 @@ class Parser {
 	 *
 	 * @param {any} props Ast related to props
 	 */
-	propsCallback (properties:any) {
+	propsCallback(properties: any) {
 		const dataParser = new PropertiesParser(properties);
 		const convertedData = dataParser.setfullInput(this.input).convert();
 
@@ -270,7 +270,7 @@ class Parser {
 	 *
 	 * @return {object} The parsed data object
 	 */
-	parse () {
+	parse() {
 		this.ast = parse(this.input, {
 			ecmaVersion: 'latest',
 			sourceType: 'module',

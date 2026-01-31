@@ -7,84 +7,89 @@
 export {}
 declare global {
   const Editor: typeof import('./tools/vue-composition-converter/components/Editor.vue')['default']
-  const EffectScope: typeof import('vue')['EffectScope']
-  const cloneObject: typeof import('./tools/gradient-generator/utils')['cloneObject']
-  const composeSfc: typeof import('./tools/vue-composition-converter/utils/parse-sfc')['composeSfc']
-  const computed: typeof import('vue')['computed']
-  const createApp: typeof import('vue')['createApp']
-  const customRef: typeof import('vue')['customRef']
-  const data: typeof import('./tools/vue-composition-converter/parser/data')['default']
-  const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
-  const defineComponent: typeof import('vue')['defineComponent']
-  const effectScope: typeof import('vue')['effectScope']
-  const format: typeof import('./tools/vue-composition-converter/utils/format')['format']
-  const getCurrentInstance: typeof import('vue')['getCurrentInstance']
-  const getCurrentScope: typeof import('vue')['getCurrentScope']
-  const h: typeof import('vue')['h']
-  const highlight: typeof import('./tools/vue-composition-converter/utils/highlight')['highlight']
-  const inject: typeof import('vue')['inject']
-  const isProxy: typeof import('vue')['isProxy']
-  const isReactive: typeof import('vue')['isReactive']
-  const isReadonly: typeof import('vue')['isReadonly']
-  const isRef: typeof import('vue')['isRef']
-  const lifecycle: typeof import('./tools/vue-composition-converter/parser/lifecycle')['default']
-  const markRaw: typeof import('vue')['markRaw']
-  const methods: typeof import('./tools/vue-composition-converter/parser/methods')['default']
-  const nextTick: typeof import('vue')['nextTick']
-  const onActivated: typeof import('vue')['onActivated']
-  const onBeforeMount: typeof import('vue')['onBeforeMount']
-  const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
-  const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
-  const onDeactivated: typeof import('vue')['onDeactivated']
-  const onErrorCaptured: typeof import('vue')['onErrorCaptured']
-  const onMounted: typeof import('vue')['onMounted']
-  const onRenderTracked: typeof import('vue')['onRenderTracked']
-  const onRenderTriggered: typeof import('vue')['onRenderTriggered']
-  const onScopeDispose: typeof import('vue')['onScopeDispose']
-  const onServerPrefetch: typeof import('vue')['onServerPrefetch']
-  const onUnmounted: typeof import('vue')['onUnmounted']
-  const onUpdated: typeof import('vue')['onUpdated']
-  const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
-  const parseSfc: typeof import('./tools/vue-composition-converter/utils/parse-sfc')['parseSfc']
+  const EffectScope: typeof import('vue').EffectScope
+  const cloneObject: typeof import('./tools/gradient-generator/utils').cloneObject
+  const composeSfc: typeof import('./tools/vue-composition-converter/utils/parse-sfc').composeSfc
+  const computed: typeof import('vue').computed
+  const createApp: typeof import('vue').createApp
+  const customRef: typeof import('vue').customRef
+  const data: typeof import('./tools/vue-composition-converter/parser/data').default
+  const defineAsyncComponent: typeof import('vue').defineAsyncComponent
+  const defineComponent: typeof import('vue').defineComponent
+  const effectScope: typeof import('vue').effectScope
+  const format: typeof import('./tools/vue-composition-converter/utils/format').format
+  const getCurrentInstance: typeof import('vue').getCurrentInstance
+  const getCurrentScope: typeof import('vue').getCurrentScope
+  const getCurrentWatcher: typeof import('vue').getCurrentWatcher
+  const h: typeof import('vue').h
+  const highlight: typeof import('./tools/vue-composition-converter/utils/highlight').highlight
+  const inject: typeof import('vue').inject
+  const isProxy: typeof import('vue').isProxy
+  const isReactive: typeof import('vue').isReactive
+  const isReadonly: typeof import('vue').isReadonly
+  const isRef: typeof import('vue').isRef
+  const isShallow: typeof import('vue').isShallow
+  const lifecycle: typeof import('./tools/vue-composition-converter/parser/lifecycle').default
+  const markRaw: typeof import('vue').markRaw
+  const methods: typeof import('./tools/vue-composition-converter/parser/methods').default
+  const nextTick: typeof import('vue').nextTick
+  const onActivated: typeof import('vue').onActivated
+  const onBeforeMount: typeof import('vue').onBeforeMount
+  const onBeforeUnmount: typeof import('vue').onBeforeUnmount
+  const onBeforeUpdate: typeof import('vue').onBeforeUpdate
+  const onDeactivated: typeof import('vue').onDeactivated
+  const onErrorCaptured: typeof import('vue').onErrorCaptured
+  const onMounted: typeof import('vue').onMounted
+  const onRenderTracked: typeof import('vue').onRenderTracked
+  const onRenderTriggered: typeof import('vue').onRenderTriggered
+  const onScopeDispose: typeof import('vue').onScopeDispose
+  const onServerPrefetch: typeof import('vue').onServerPrefetch
+  const onUnmounted: typeof import('vue').onUnmounted
+  const onUpdated: typeof import('vue').onUpdated
+  const onWatcherCleanup: typeof import('vue').onWatcherCleanup
+  const parseSfc: typeof import('./tools/vue-composition-converter/utils/parse-sfc').parseSfc
   const parsedSfc: typeof import('./tools/vue-composition-converter/utils/parse-sfc')['parsedSfc']
-  const parser: typeof import('./tools/vue-composition-converter/parser/index')['default']
-  const presets: typeof import('./tools/gradient-generator/presets/index')['default']
-  const props: typeof import('./tools/vue-composition-converter/parser/props')['default']
-  const provide: typeof import('vue')['provide']
-  const reactive: typeof import('vue')['reactive']
-  const readonly: typeof import('vue')['readonly']
-  const ref: typeof import('vue')['ref']
-  const resolveComponent: typeof import('vue')['resolveComponent']
-  const shallowReactive: typeof import('vue')['shallowReactive']
-  const shallowReadonly: typeof import('vue')['shallowReadonly']
-  const shallowRef: typeof import('vue')['shallowRef']
-  const toRaw: typeof import('vue')['toRaw']
-  const toRef: typeof import('vue')['toRef']
-  const toRefs: typeof import('vue')['toRefs']
-  const toValue: typeof import('vue')['toValue']
+  const parser: typeof import('./tools/vue-composition-converter/parser/index').default
+  const presets: typeof import('./tools/gradient-generator/presets/index').default
+  const props: typeof import('./tools/vue-composition-converter/parser/props').default
+  const provide: typeof import('vue').provide
+  const reactive: typeof import('vue').reactive
+  const readonly: typeof import('vue').readonly
+  const ref: typeof import('vue').ref
+  const resolveComponent: typeof import('vue').resolveComponent
+  const shallowReactive: typeof import('vue').shallowReactive
+  const shallowReadonly: typeof import('vue').shallowReadonly
+  const shallowRef: typeof import('vue').shallowRef
+  const toRaw: typeof import('vue').toRaw
+  const toRef: typeof import('vue').toRef
+  const toRefs: typeof import('vue').toRefs
+  const toValue: typeof import('vue').toValue
   const tool: typeof import('./tools/vue-composition-converter/tool/index.vue')['default']
-  const triggerRef: typeof import('vue')['triggerRef']
-  const uigradients: typeof import('./tools/gradient-generator/presets/uigradients')['default']
-  const unref: typeof import('vue')['unref']
-  const useAttrs: typeof import('vue')['useAttrs']
-  const useCssModule: typeof import('vue')['useCssModule']
-  const useCssVars: typeof import('vue')['useCssVars']
-  const useGradientStore: typeof import('./tools/gradient-generator/store')['useGradientStore']
-  const useId: typeof import('vue')['useId']
-  const useInput: typeof import('./tools/gradient-generator/composables/useInput')['default']
-  const useModel: typeof import('vue')['useModel']
-  const useSlots: typeof import('vue')['useSlots']
-  const useTemplateRef: typeof import('vue')['useTemplateRef']
-  const vueCompositionConverter: typeof import('./tools/vue-composition-converter/index.vue')['default']
-  const watch: typeof import('vue')['watch']
-  const watchEffect: typeof import('vue')['watchEffect']
-  const watchPostEffect: typeof import('vue')['watchPostEffect']
-  const watchSyncEffect: typeof import('vue')['watchSyncEffect']
-  const webgradients: typeof import('./tools/gradient-generator/presets/webgradients')['default']
+  const triggerRef: typeof import('vue').triggerRef
+  const uigradients: typeof import('./tools/gradient-generator/presets/uigradients').default
+  const unref: typeof import('vue').unref
+  const useAttrs: typeof import('vue').useAttrs
+  const useCssModule: typeof import('vue').useCssModule
+  const useCssVars: typeof import('vue').useCssVars
+  const useGradientStore: typeof import('./tools/gradient-generator/store').useGradientStore
+  const useId: typeof import('vue').useId
+  const useInput: typeof import('./tools/gradient-generator/composables/useInput').default
+  const useModel: typeof import('vue').useModel
+  const useSlots: typeof import('vue').useSlots
+  const useTemplateRef: typeof import('vue').useTemplateRef
+  const vueCompositionConverter: typeof import('./tools/vue-composition-converter/index.vue').default
+  const watch: typeof import('vue').watch
+  const watchEffect: typeof import('vue').watchEffect
+  const watchPostEffect: typeof import('vue').watchPostEffect
+  const watchSyncEffect: typeof import('vue').watchSyncEffect
+  const webgradients: typeof import('./tools/gradient-generator/presets/webgradients').default
 }
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
+  export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { GradientOptions, GradientColor } from './tools/gradient-generator/types'
+  import('./tools/gradient-generator/types')
 }

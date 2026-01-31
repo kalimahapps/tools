@@ -7,7 +7,7 @@
 			transform
 			transition-shadow
 			w-[10px]
-			z-[1]"
+			z-1"
 		:style="{
 			left: selectedGradient.colors[index].stop + '%'
 		}"
@@ -45,15 +45,15 @@
 			<input
 				v-model="colorStop"
 				type="number"
-				class="bg-[var(--vp-c-bg)]
-					border
-					border-solid
-					border-zinc-600
+				class="bg-(--vp-c-bg)!
+					border!
+					border-solid!
+					border-zinc-600!
 					rounded-md
 					text-center
 					focus:text-base
 					transition-all
-					focus:py-1
+					focus:py-1!
 					focus:w-12"
 				min="0"
 				size="3"
@@ -130,7 +130,7 @@ const getStyle = computed(() => {
 	return style;
 });
 
-const dragStart = function(index: number) {
+const dragStart = function (index: number) {
 	dragging.value = true;
 	selectedGradient.value.colors[index].status = 'dragged';
 	setColor(index);
@@ -142,7 +142,7 @@ const {
 	parseDigits,
 } = useInput(colorStop);
 
-const onInputFocus = function(index: number) {
+const onInputFocus = function (index: number) {
 	setColor(index);
 };
 
@@ -152,7 +152,7 @@ const getInputClasses = computed(() => {
 	return isSelected || isDragged ? 'text-base w-12 py-1' : 'text-xs w-10 py-1';
 });
 
-const dragStop = function() {
+const dragStop = function () {
 	if (!dragging.value) {
 		return;
 	}
@@ -168,7 +168,7 @@ const dragStop = function() {
 	}
 };
 
-const doDrag = function(event: MouseEvent) {
+const doDrag = function (event: MouseEvent) {
 	if (!dragging.value) {
 		return;
 	}

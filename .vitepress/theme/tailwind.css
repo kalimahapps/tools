@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --vp-c-brand-1: #6767e7;
@@ -13,4 +11,30 @@
 
 .VPSidebarItem.is-active p {
 	font-weight: bold !important;
+}
+
+@theme {
+  --breakpoint-desktop: 900px;
+}
+
+@utility soft-scrollbar {
+  --scrollbar-size: 2px;
+  --scrollbar-color: var(--color-primary);
+  --scrollbar-track-color: #d6d6d6;
+  --scrollbar-thumb-color: #929292;
+  scrollbar-width: thin;
+}
+
+.soft-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+}
+
+.soft-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+  background-color: var(--scrollbar-track-color);
+}
+
+.soft-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
 }

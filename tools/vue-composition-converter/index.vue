@@ -13,10 +13,7 @@
 			px-1"
 	>
 		<div
-			class="border
-				border-[var(--vp-c-divider)]
-				overflow-hidden
-				relative"
+			class="border border-(--vp-c-divider) overflow-hidden relative"
 		>
 			<TransitionSlide :offset="[0,'100%']" no-opacity>
 				<div
@@ -77,7 +74,7 @@ p {
 
 		<div
 			class="border
-				border-[var(--vp-c-divider)]
+				border-(--vp-c-divider)
 				flex
 				flex-col
 				h-full
@@ -97,7 +94,7 @@ p {
 					shadow-white
 					w-20
 					z-10"
-				:class="compositionOutput && '!bg-white'"
+				:class="compositionOutput && 'bg-white!'"
 			/>
 
 			<div
@@ -177,7 +174,7 @@ p {
 						overflow-auto
 						soft-scrollbar
 						transition"
-					:class="errorMessage && '!opacity-80'"
+					:class="errorMessage && 'opacity-80!'"
 					v-html="compositionOutput"
 				/>
 			</template>
@@ -217,7 +214,7 @@ const debouncedInput = refDebounced(userInput);
 /**
  * Copy the output (non-highlighted) code to clipboard
  */
-const copyOutput = function(){
+const copyOutput = function () {
 	copy(updatedCode.value);
 };
 
@@ -250,11 +247,11 @@ worker.addEventListener('message', (event: any) => {
 	const { code, status } = event.data;
 
 	// Don't process if there is an error
-	if (errorMessage.value !== ''){
+	if (errorMessage.value !== '') {
 		return;
 	}
 
-	if (status === 'success'){
+	if (status === 'success') {
 		compositionOutput.value = code;
 		errorMessage.value = '';
 	} else {
@@ -265,11 +262,16 @@ worker.addEventListener('message', (event: any) => {
 });
 
 const processCode = () => {
-	const { scriptContent, templateContent, styleContent, styleAttributes } = parseSfc(userInput.value);
+	const {
+		scriptContent,
+		templateContent,
+		styleContent,
+		styleAttributes,
+	} = parseSfc(userInput.value);
 
 	errorMessage.value = '';
 
-	if (!scriptContent){
+	if (!scriptContent) {
 		compositionOutput.value = '';
 		loading.value = false;
 		worker.terminate();
@@ -335,7 +337,7 @@ watch(showSectionComment, processCode);
 </script>
 
 <style scoped>
-:deep(.shiki){
+:deep(.shiki) {
 	overflow: auto;
 	height: 100%;
 	width: 100%;

@@ -1,12 +1,19 @@
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import AutoImport from 'unplugin-auto-import/vite';
-import VueIconsResolver from '@kalimahapps/vue-icons/resolver';
-import Components from 'unplugin-vue-components/vite';
+import VueIconsPlugin from '@kalimahapps/vue-icons/vite';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	worker: {
 		format: 'es',
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern-compiler',
+			},
+		},
 	},
 	plugins: [
 		tsconfigPaths(),
@@ -25,8 +32,7 @@ export default defineConfig({
 				globalsPropValue: true,
 			},
 		}),
-		Components({
-			resolvers: [VueIconsResolver],
-		}),
+		VueIconsPlugin(),
+		tailwindcss(),
 	],
 });

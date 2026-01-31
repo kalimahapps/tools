@@ -9,22 +9,22 @@ class Lifecycle {
 	/**
 	 * List of reactive properties
 	 */
-	dataIdentifiers :any = {};
+	dataIdentifiers: any = {};
 
 	/**
 	 * List of method identifiers
 	 */
-	methodIdentifiers :string[] = [];
+	methodIdentifiers: string[] = [];
 
 	/**
 	 * List of computed identifiers
 	 */
-	computedIdentifiers :string[] = [];
+	computedIdentifiers: string[] = [];
 
 	/**
 	 * List of prop identifiers
 	 */
-	propsIdentifiers :string[] = [];
+	propsIdentifiers: string[] = [];
 
 	/**
 	 * AST of the lifecycle object
@@ -46,7 +46,7 @@ class Lifecycle {
 	 *
 	 * @param {any} data The lifecycle object
 	 */
-	constructor (data: any) {
+	constructor(data: any) {
 		this.data = data;
 	}
 
@@ -56,7 +56,7 @@ class Lifecycle {
 	 * @param  {lifecycleType} type The lifecycle type
 	 * @return {this}               The current instance
 	 */
-	setType (type: lifecycleType): this {
+	setType(type: lifecycleType): this {
 		this.type = type;
 		return this;
 	}
@@ -67,7 +67,7 @@ class Lifecycle {
 	 * @param  {string} fullInput The full input string, used to slice text directly from the input
 	 * @return {this}             The current instance
 	 */
-	setfullInput (fullInput: string): this {
+	setfullInput(fullInput: string): this {
 		this.fullInput = fullInput;
 		return this;
 	}
@@ -78,7 +78,7 @@ class Lifecycle {
 	 * @param  {any}  dataIdentifiers List of reactive properties
 	 * @return {this}                 The current instance
 	 */
-	setDataIdentifiers (dataIdentifiers: any): this {
+	setDataIdentifiers(dataIdentifiers: any): this {
 		this.dataIdentifiers = dataIdentifiers;
 		return this;
 	}
@@ -89,7 +89,7 @@ class Lifecycle {
 	 * @param  {string[]} propsIdentifiers List of prop identifiers
 	 * @return {this}                      The current instance
 	 */
-	setPropsIdentifiers (propertiesIdentifiers: string[]):this {
+	setPropsIdentifiers(propertiesIdentifiers: string[]): this {
 		this.propsIdentifiers = propertiesIdentifiers;
 		return this;
 	}
@@ -100,7 +100,7 @@ class Lifecycle {
 	 * @param  {string[]} methodIdentifiers List of method identifiers
 	 * @return {this}                       The current instance
 	 */
-	setMethodIdentifiers (methodIdentifiers: string[]): this {
+	setMethodIdentifiers(methodIdentifiers: string[]): this {
 		this.methodIdentifiers = methodIdentifiers;
 		return this;
 	}
@@ -111,7 +111,7 @@ class Lifecycle {
 	 * @param  {string[]} computedIdentifiers The computed identifiers
 	 * @return {this}                         The current instance
 	 */
-	setComputedIdentifiers (computedIdentifiers: string[]): this {
+	setComputedIdentifiers(computedIdentifiers: string[]): this {
 		this.computedIdentifiers = computedIdentifiers;
 		return this;
 	}
@@ -124,7 +124,7 @@ class Lifecycle {
 	 * @param  {string} functionBody The function body
 	 * @return {string}              The updated function body
 	 */
-	replaceThisKeyword(functionBody: string) :string {
+	replaceThisKeyword(functionBody: string): string {
 		return functionBody.replaceAll(/this.(?<id>[\w$]+)/ug, (match, identifier) => {
 			const type = this.dataIdentifiers[identifier];
 			if (type) {
@@ -154,7 +154,7 @@ class Lifecycle {
 	 *
 	 * @return {string} The import to use (eg: onMounted, onUpdated .. etc)
 	 */
-	getImport () :string {
+	getImport(): string {
 		return this.import;
 	}
 
@@ -163,15 +163,15 @@ class Lifecycle {
 	 *
 	 * @return {string} The converted lifecycle string
 	 */
-	convert () :string {
+	convert(): string {
 		const { value } = this.data;
 		const { body } = value;
 
 		const bodyString = this.fullInput.slice(body.start, body.end).trim();
 		const updatedBody = this.replaceThisKeyword(bodyString);
 
-		const typesMap :{
-			[key: string]: string,
+		const typesMap: {
+			[key: string]: string;
 		} = {
 			mounted: 'onMounted',
 			updated: 'onUpdated',
@@ -182,7 +182,7 @@ class Lifecycle {
 			destroyed: 'onUnmounted',
 		};
 
-		if (this.type === undefined){
+		if (this.type === undefined) {
 			return updatedBody;
 		}
 

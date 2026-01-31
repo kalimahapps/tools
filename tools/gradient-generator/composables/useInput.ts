@@ -44,7 +44,7 @@ const useInput = (reference: Ref<number>) => {
 		if (currentValue > data.min) {
 			setValue(currentValue - 1);
 		} else if (currentValue === data.min) {
-		 	setValue(data.max);
+			setValue(data.max);
 		}
 	};
 

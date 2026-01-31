@@ -81,15 +81,15 @@
 			<div>
 				<a
 					href="https://safha.kalimah-apps.com/"
-					class="!no-underline
-						!text-white
-						!transition-all
-						bg-emerald-500
+					class="bg-emerald-500
 						dark:bg-emerald-800
 						hover:bg-emerald-600
+						no-underline!
 						px-4
 						py-2
-						rounded-md"
+						rounded-md
+						text-white!
+						transition-all!"
 				>
 					Explore
 				</a>
@@ -97,15 +97,15 @@
 			<div>
 				<a
 					href="https://kalimahapps.lemonsqueezy.com/buy/1aaaaddf-53d2-4ff5-8669-1e2786431f62"
-					class="!no-underline
-						!text-white
-						!transition-all
-						bg-sky-500
+					class="bg-sky-500
 						dark:bg-sky-800
 						hover:bg-sky-600
+						no-underline!
 						px-4
 						py-2
-						rounded-md"
+						rounded-md
+						text-white!
+						transition-all!"
 				>
 					Buy
 				</a>

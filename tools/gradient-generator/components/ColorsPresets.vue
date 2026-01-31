@@ -33,7 +33,7 @@
 		<div
 			id="presets-container"
 			class="-translate-x-1/2
-				bg-[var(--vp-c-bg)]
+				bg-(--vp-c-bg)
 				duration-300
 				fixed
 				bottom-0

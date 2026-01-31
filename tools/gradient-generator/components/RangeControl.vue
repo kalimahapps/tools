@@ -23,7 +23,7 @@
 				:min="min"
 				:max="max"
 				:step="step"
-				class="bg-zinc-300 cursor-pointer h-px w-full"
+				class="bg-zinc-300! cursor-pointer h-px w-full"
 			>
 		</div>
 		<div class="text-end text-xs w-1/5">
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-const { max, min, step } = defineProps({
+const { max, step } = defineProps({
 	/**
 	 * The title of the control.
 	 */
@@ -95,13 +95,11 @@ const handleScroll = function (event: WheelEvent) {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 input[type='range'] {
-  $thumb: var(--vp-c-brand-3);
-  $size: 10px;
-  $width: 100%;
-  $height: 2px;
-  $track-focus: var(--vp-c-brand-soft);
+  --size: 10px;
+  --width: 100%;
+  --height: 2px;
 
   /* fix for FF unable to apply focus style bug  */
   border: 1px solid transparent;
@@ -113,8 +111,8 @@ input[type='range'] {
   -webkit-appearance: none;
 
   &::-webkit-slider-runnable-track {
-    width: $width;
-    height: $height;
+    width: var(--width);
+    height: var(--height);
     border: none;
     border-radius: 3px;
     transition: all 0.2s;
@@ -123,10 +121,10 @@ input[type='range'] {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
-    height: $size;
-    width: $size;
+    height: var(--size);
+    width: var(--size);
     border-radius: 50%;
-    background: $thumb;
+    background: var(--vp-c-brand-3);
     margin-top: -4px;
   }
 
@@ -134,26 +132,26 @@ input[type='range'] {
     outline: none;
 
     &::-moz-range-track {
-      background: $track-focus;
+      background: var(--vp-c-brand-soft);
     }
 
     &::-webkit-slider-runnable-track {
-      background: $track-focus;
+      background: var(--vp-c-brand-soft);
     }
 
     &::-ms-fill-lower {
-      background: $track-focus;
+      background: var(--vp-c-brand-soft);
     }
 
     &::-ms-fill-upper {
-      background: $track-focus;
+      background: var(--vp-c-brand-soft);
     }
   }
 
   /* FF */
   &::-moz-range-track {
-    width: $width;
-    height: $height;
+    width: var(--width);
+    height: var(--height);
     border: none;
     border-radius: 3px;
     transition: all 0.2s;
@@ -162,10 +160,10 @@ input[type='range'] {
 
   &::-moz-range-thumb {
     border: none;
-    height: $size;
-    width: $size;
+    height: var(--size);
+    width: var(--size);
     border-radius: 50%;
-    background: $thumb;
+    background: var(--vp-c-brand-3);
     z-index: 2;
   }
 
@@ -177,8 +175,8 @@ input[type='range'] {
 
   /* IE*/
   &::-ms-track {
-    width: $width;
-    height: $height;
+    width: var(--width);
+    height: var(--height);
 
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
     background: transparent;
@@ -201,10 +199,10 @@ input[type='range'] {
 
   &::-ms-thumb {
     border: none;
-    height: $size;
-    width: $size;
+    height: var(--size);
+    width: var(--size);
     border-radius: 50%;
-    background: $thumb;
+    background: var(--vp-c-brand-3);
     transform: translateY(20%);
   }
 }

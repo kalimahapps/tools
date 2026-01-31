@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
 	title: 'Kalimah Tools',
 	description: 'A collection of tools',
-		 head: [
+	head: [
 		[
 			'link', {
 				rel: 'icon',

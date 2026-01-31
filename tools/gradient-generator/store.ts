@@ -56,9 +56,9 @@ const showControlsContainer = ref(true);
  * @param  {GradientColor} b Color object
  * @return {Number}          Sort order
  */
-const sortColors = function (a: GradientColor, b: GradientColor) : number {
+const sortColors = function (a: GradientColor, b: GradientColor): number {
 	if (a.stop !== b.stop) {
-		 return a.stop - b.stop;
+		return a.stop - b.stop;
 	}
 
 	return 0;
@@ -105,16 +105,7 @@ const generateGradients = function () {
 
 			gradientArray.push(colorsArray);
 
-			css +=
-            `radial-gradient(${
-            	shape
-            } ${
-            	sizeCSS
-            } at ${
-            	positionCSS
-            }, ${
-            	gradientArray.join(', ')
-            })`;
+			css += `radial-gradient(${shape} ${sizeCSS} at ${positionCSS}, ${gradientArray.join(', ')})`;
 
 			gradients.value[index].style['background-image'] = css;
 		}
@@ -129,7 +120,7 @@ const fullCss = computed(() => {
 
 	for (const gradient of gradients.value) {
 		if (gradient.status === 'hide') {
-			 continue;
+			continue;
 		}
 
 		final.push(gradient.style['background-image']);

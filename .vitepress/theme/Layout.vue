@@ -5,11 +5,11 @@
 				{{ $frontmatter.title }}
 				<a
 					v-if="$frontmatter.info"
-					class="bg-[var(--vp-button-alt-bg)]
+					class="bg-(--vp-button-alt-bg)
 						block
 						border
-						hover:border-[var(--vp-button-alt-border-hover)]
-						border-[var(--vp-button-alt-border)]
+						hover:border-(--vp-button-alt-border-hover)
+						border-(--vp-button-alt-border)
 						p-1
 						rounded-full
 						transition-colors"

@@ -9,7 +9,7 @@
 				rounded-full
 				size-28
 				transition-colors"
-			:class="isKnobClicked ? '!border-[var(--vp-c-brand-soft)]' : ''"
+			:class="isKnobClicked ? 'border-(--vp-c-brand-soft)!' : ''"
 			@click="updateCirclePosition"
 		>
 			<div class="absolute size-full" :style="getRotation">
@@ -20,7 +20,7 @@
 						absolute
 						top-0
 						left-1/2
-						bg-[var(--vp-c-brand-1)]
+						bg-(--vp-c-brand-1)
 						cursor-pointer
 						rounded-full
 						size-3.5"
@@ -66,7 +66,6 @@
 </template>
 
 <script setup lang="ts">
-
 /**
  * The state of the knob click
  */
@@ -119,7 +118,7 @@ const handleCircleValue = function (event: WheelEvent) {
 
 const moveCircle = function (event: MouseEvent) {
 	if (!isKnobClicked.value) {
-		 return;
+		return;
 	}
 
 	const left = event.clientX - circle.value.x;
@@ -158,7 +157,7 @@ onBeforeMount(() => {
 	});
 
 	document.addEventListener('mouseup', () => {
-		 return isKnobClicked.value = false;
+		return isKnobClicked.value = false;
 	});
 	document.addEventListener('mousemove', moveCircle);
 

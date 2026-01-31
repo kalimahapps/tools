@@ -1,5 +1,5 @@
 <template>
-	<h2 class="!border-0 !mt-0">
+	<h2 class="border-0! mt-0!">
 		Tools
 	</h2>
 	<div class="grid grid-cols-3 gap-4">
@@ -7,26 +7,22 @@
 			v-for="tool in tools"
 			:key="tool.link"
 			:href="`${tool.link}`"
-			class="!no-underline
-				!transition-all
-				bg-[var(--vp-c-bg-soft)]
+			class="bg-(--vp-c-bg-soft)
 				border
-				hover:border-[var(--vp-c-brand-1)]
-				border-[var(--vp-c-divider)]
+				hover:border-(--vp-c-brand-1)
+				border-(--vp-c-divider)
+				no-underline!
 				p-6
-				rounded-xl"
+				rounded-xl
+				transition-all!"
 		>
 			<h2
-				class="!border-0
-					!my-0
-					!py-0
-					!text-lg
-					text-[var(--vp-c-text-1)]"
+				class="border-0! my-0! py-0! text-(--vp-c-text-1) text-lg!"
 			>
 				{{ tool.label }}
 			</h2>
 			<p
-				class="text-[var(--vp-c-text-2)]"
+				class="text-(--vp-c-text-2)"
 			>
 				{{ tool.description }}
 			</p>

@@ -3,11 +3,11 @@ class DataParser {
 	 * List of vue imports
 	 */
 	imports: {
-		[string: string]: boolean,
+		[string: string]: boolean;
 	} = {
-			reactive: false,
-			ref: false,
-		};
+		reactive: false,
+		ref: false,
+	};
 
 	/**
 	 * The properties of the data object
@@ -23,7 +23,7 @@ class DataParser {
 	 * List of identifiers and their reactive type (ref or reactive)
 	 */
 	identifiers: {
-		[key: string]: string,
+		[key: string]: string;
 	} = {};
 
 	/**
@@ -32,7 +32,7 @@ class DataParser {
 	 *
 	 * @param {any} data The data property of a Vue component
 	 */
-	constructor (data: any) {
+	constructor(data: any) {
 		const { type } = data.value;
 
 		/* Get properties from data
@@ -58,7 +58,7 @@ class DataParser {
 	 * @param  {string} fullInput The full input string, used to slice text directly from the input
 	 * @return {this}             The current instance
 	 */
-	setfullInput (fullInput: string): this {
+	setfullInput(fullInput: string): this {
 		this.fullInput = fullInput;
 		return this;
 	}
@@ -73,7 +73,7 @@ class DataParser {
 	 *
 	 * @param {any} nodeValue The data property of a Vue component
 	 */
-	getObjectProperties (nodeValue: any) {
+	getObjectProperties(nodeValue: any) {
 		this.properties = nodeValue.properties;
 	}
 
@@ -89,7 +89,7 @@ class DataParser {
 	 *
 	 * @param {any} nodeValue The data property of a Vue component
 	 */
-	getFunctionProperties (nodeValue: any) {
+	getFunctionProperties(nodeValue: any) {
 		const findReturnStatement = nodeValue.body.body.find((node: any) => {
 			return node.type === 'ReturnStatement';
 		});
@@ -107,7 +107,7 @@ class DataParser {
 	 *
 	 * @param nodeValue The data property of a Vue component
 	 */
-	getArrowFunctionProperties (nodeValue: any) {
+	getArrowFunctionProperties(nodeValue: any) {
 		let properties: any[] = [];
 
 		const { type, properties: nodeProperties } = nodeValue.body;
@@ -136,7 +136,7 @@ class DataParser {
 	 *
 	 * @return {string[]} The imports list
 	 */
-	getImports ():string[] {
+	getImports(): string[] {
 		return Object.keys(this.imports).filter((key: string) => {
 			return this.imports[key];
 		});
@@ -147,8 +147,8 @@ class DataParser {
 	 *
 	 * @return {string[]} The reactive properties
 	 */
-	convert() :string[] {
-		const output :string[] = [];
+	convert(): string[] {
+		const output: string[] = [];
 		for (const property of this.properties) {
 			const { name: keyName, value: keyValue } = property.key;
 
@@ -184,7 +184,7 @@ class DataParser {
 	 *
 	 * @return {object} The identifiers and their reactive type
 	 */
-	getIdentifiers () {
+	getIdentifiers() {
 		return this.identifiers;
 	}
 }

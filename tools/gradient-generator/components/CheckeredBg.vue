@@ -48,6 +48,6 @@ const sizeData = sizesMap[size];
 			rgba(0, 0, 0, 0.0980392) 0),
 		white;
 	background-position: v-bind(sizeData.position);
-   	background-size: v-bind(sizeData.size);
+	background-size: v-bind(sizeData.size);
 }
 </style>

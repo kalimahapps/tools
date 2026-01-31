@@ -5,7 +5,7 @@ import { mount } from '@vue/test-utils';
 import { expect, it, describe } from 'vitest';
 
 describe('ControlsContainer', () => {
-	it('renders RangeControl', async() => {
+	it('renders RangeControl', async () => {
 		const wrapper = mount(RangeControl, {
 			// attachTo: document.body,
 			props: {
@@ -30,7 +30,7 @@ describe('ControlsContainer', () => {
 		expect(wrapper.props().modelValue).toBe(0);
 	});
 
-	it('renders KnobControl', async() => {
+	it('renders KnobControl', async () => {
 		const wrapper = mount(KnobControl, {
 			attachTo: document.body,
 			props: {

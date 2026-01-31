@@ -4,7 +4,7 @@
 			hover:opacity-100
 			absolute
 			left-1/2
-			bg-[var(--vp-c-bg)]
+			bg-(--vp-c-bg)
 			border-radius-0.3em-0.3em-0-0
 			duration-300
 			flex

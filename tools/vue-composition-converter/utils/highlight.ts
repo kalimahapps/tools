@@ -8,7 +8,7 @@ import getWasm from 'shiki/wasm';
  * @param  {string}          code Code to highlight
  * @return {Promise<string>}      Highlighted code
  */
-const highlight = async function(code: string) : Promise<string>{
+const highlight = async function (code: string): Promise<string> {
 	const highlighter = await createHighlighterCore({
 		themes: [jameelTheme],
 		langs: [import('shiki/langs/vue.mjs')],

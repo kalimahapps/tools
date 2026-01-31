@@ -4,7 +4,7 @@
 		class="h-10 mt-2 relative shrink-0 w-full"
 	>
 		<div
-			class="border-[2px]
+			class="border-2
 				border-white
 				cursor-copy
 				h-full
@@ -81,7 +81,7 @@ const displayBarGradient = computed(() => {
 
 	for (const color of colorsClone) {
 		if (color.status === 'out') {
-			 continue;
+			continue;
 		}
 
 		colorsArray.push(`${color.value.hex8} ${color.stop}%`);

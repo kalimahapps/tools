@@ -23,7 +23,7 @@ class PropsParser {
 	 *
 	 * @param {any} data Props object
 	 */
-	constructor (data:any) {
+	constructor(data: any) {
 		this.allProperties = data;
 	}
 
@@ -33,7 +33,7 @@ class PropsParser {
 	 * @param  {string} fullInput The full input string, used to slice text directly from the input
 	 * @return {this}             The current instance
 	 */
-	setfullInput (fullInput: string): this {
+	setfullInput(fullInput: string): this {
 		this.fullInput = fullInput;
 		return this;
 	}
@@ -43,14 +43,14 @@ class PropsParser {
 	 *
 	 * @return {string[]} List of prop identifiers
 	 */
-	getIdentifiers () :string[] {
+	getIdentifiers(): string[] {
 		return this.identifiers;
 	}
 
 	/**
 	 * Extract identifiers from props
 	 */
-	extractIdentifiers () {
+	extractIdentifiers() {
 		const {	value } = this.allProperties;
 		const { properties, elements } = value;
 
@@ -76,7 +76,7 @@ class PropsParser {
 	 *
 	 * @return {string} The converted props
 	 */
-	convert () :string {
+	convert(): string {
 		const { value: { start, end } } = this.allProperties;
 
 		this.extractIdentifiers();

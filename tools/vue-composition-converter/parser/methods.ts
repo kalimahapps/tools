@@ -9,27 +9,27 @@ class MethodParser {
 	/**
 	 * List of methods
 	 */
-	methods :any[] = [];
+	methods: any[] = [];
 
 	/**
 	 * List of reactive properties
 	 */
-	dataIdentifiers :any = {};
+	dataIdentifiers: any = {};
 
 	/**
 	 * List of method identifiers
 	 */
-	methodIdentifiers :string[] = [];
+	methodIdentifiers: string[] = [];
 
 	/**
 	 * List of computed identifiers
 	 */
-	computedIdentifiers :string[] = [];
+	computedIdentifiers: string[] = [];
 
 	/**
 	 * List of prop identifiers
 	 */
-	propsIdentifiers :string[] = [];
+	propsIdentifiers: string[] = [];
 
 	/**
 	 * List of self identifiers.
@@ -38,7 +38,7 @@ class MethodParser {
 	 * will be the list of computed identifiers. It will be used
 	 * to replace `this` keyword when used in the same type.
 	 */
-	selfIdentifiers :string[] = [];
+	selfIdentifiers: string[] = [];
 
 	/**
 	 * Holds the type of method (computed, watch .. etc)
@@ -50,7 +50,7 @@ class MethodParser {
 	 *
 	 * @param {any} data Methods object
 	 */
-	constructor (data: any) {
+	constructor(data: any) {
 		const { properties } = data.value;
 
 		// Filter out spread elements
@@ -65,7 +65,7 @@ class MethodParser {
 	 * @param  {string} fullInput The full input string, used to slice text directly from the input
 	 * @return {this}             The current instance
 	 */
-	setfullInput (fullInput: string): this {
+	setfullInput(fullInput: string): this {
 		this.fullInput = fullInput;
 		return this;
 	}
@@ -76,7 +76,7 @@ class MethodParser {
 	 * @param  {any}  dataIdentifiers List of reactive properties
 	 * @return {this}                 The current instance
 	 */
-	setDataIdentifiers (dataIdentifiers: any):this {
+	setDataIdentifiers(dataIdentifiers: any): this {
 		this.dataIdentifiers = dataIdentifiers;
 		return this;
 	}
@@ -87,7 +87,7 @@ class MethodParser {
 	 * @param  {string[]} propertiesIdentifiers List of prop identifiers
 	 * @return {this}                           The current instance
 	 */
-	setPropsIdentifiers (propertiesIdentifiers: string[]):this {
+	setPropsIdentifiers(propertiesIdentifiers: string[]): this {
 		this.propsIdentifiers = propertiesIdentifiers;
 		return this;
 	}
@@ -98,7 +98,7 @@ class MethodParser {
 	 * @param  {string[]} methodIdentifiers List of method identifiers
 	 * @return {this}                       The current instance
 	 */
-	setMethodIdentifiers (methodIdentifiers: string[]): this {
+	setMethodIdentifiers(methodIdentifiers: string[]): this {
 		this.methodIdentifiers = methodIdentifiers;
 		return this;
 	}
@@ -109,7 +109,7 @@ class MethodParser {
 	 * @param  {string[]} computedIdentifiers The computed identifiers
 	 * @return {this}                         The current instance
 	 */
-	setComputedIdentifiers (computedIdentifiers: string[]): this {
+	setComputedIdentifiers(computedIdentifiers: string[]): this {
 		this.computedIdentifiers = computedIdentifiers;
 		return this;
 	}
@@ -120,7 +120,7 @@ class MethodParser {
 	 * @param  {MethodType} type The type of method
 	 * @return {this}            The current instance
 	 */
-	setMethodType (type: MethodType) :this{
+	setMethodType(type: MethodType): this {
 		this.methodType = type;
 		return this;
 	}
@@ -130,7 +130,7 @@ class MethodParser {
 	 *
 	 * @return {string[]} The method identifiers
 	 */
-	getMethodIdentifiers (): string[] {
+	getMethodIdentifiers(): string[] {
 		return this.methodIdentifiers;
 	}
 
@@ -139,7 +139,7 @@ class MethodParser {
 	 *
 	 * @return {string[]} The computed identifiers
 	 */
-	getComputedIdentifiers (): string[] {
+	getComputedIdentifiers(): string[] {
 		return this.computedIdentifiers;
 	}
 
@@ -151,8 +151,8 @@ class MethodParser {
 	 * @param  {string} functionBody The function body
 	 * @return {string}              The updated function body
 	 */
-	replaceThisKeyword(functionBody: string) :string {
-		/*eslint complexity: ["warn", 9]*/
+	replaceThisKeyword(functionBody: string): string {
+		/* eslint complexity: ["warn", 9] */
 		return functionBody.replaceAll(/this.(?<id>[\w$]+)/ug, (match, identifier) => {
 			const type = this.dataIdentifiers[identifier];
 
@@ -186,7 +186,7 @@ class MethodParser {
 	/**
 	 * Get self identifiers (the method that belongs to the current type)
 	 */
-	getSelfIdentifiers () {
+	getSelfIdentifiers() {
 		for (const property of this.methods) {
 			const { key } = property;
 
@@ -199,12 +199,12 @@ class MethodParser {
 	 *
 	 * @return {string[]} The reactive properties
 	 */
-	convert() :string[] {
+	convert(): string[] {
 		if (this.methods.length === 0) {
 			return [];
 		}
 
-		const output :string[] = [];
+		const output: string[] = [];
 
 		this.getSelfIdentifiers();
 		for (const property of this.methods) {
@@ -220,17 +220,17 @@ class MethodParser {
 			if (
 				['ArrowFunctionExpression', 'CallExpression'].includes(type) === false
 				&& methodBody.trim().startsWith('function') === false
-			){
+			) {
 				methodBody = `function${methodBody}`;
 			}
 
-			if (async){
+			if (async) {
 				methodBody = `async ${methodBody}`;
 			}
 
 			// Handle different method types
 			let newFunction = '';
-			switch (this.methodType){
+			switch (this.methodType) {
 				case 'watch': {
 					newFunction = `watch(${identifier}, ${methodBody})`;
 

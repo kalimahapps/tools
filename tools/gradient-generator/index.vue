@@ -7,13 +7,13 @@
 			relative"
 	>
 		<div
-			class="fixed inset-0 z-[1]"
+			class="fixed inset-0 z-1"
 			:style="{
 				background: fullCss
 			}"
 		/>
-		<CheckeredBg class="!fixed z-0" size="lg" />
-		<ControlsContainer	id="controls-container" class="z-[2]" />
+		<CheckeredBg class="fixed~ z-0" size="lg" />
+		<ControlsContainer	id="controls-container" class="z-2" />
 	</div>
 </template>
 
